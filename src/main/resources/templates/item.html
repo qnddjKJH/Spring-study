@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title th:if="${basic} != null">인원 확인</title>
+    <title th:if="${profile} != null">프로필 확인</title>
+
+    <style>
+      div.item-basic {
+          margin: 10px 10% 10px 10%;
+        }
+      div.item-profile {
+          margin: 10px 10% 10px 10%;
+        }
+    </style>
+
+    <script>
+      function trHover(tr) {
+        tr.style.backgroundColor = "#E2E2E2";
+      }
+      function trOut(tr) {
+        tr.style.backgroundColor = "white";
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <header style="margin: 10px;">
+      <a href="/" style="text-decoration: none; color: black;">
+        <img
+          th:src="@{/images/spring_boot_green.png}"
+          style="height: 100px; width: 130px; margin-right: 15px;"
+        />
+        <span style="font-size: 24pt;"><strong>Spring Boot CRUD</strong></span>
+      </a>
+      <hr>
+    </header>
+
+    <div class="item-basic" th:if="${basic} != null">
+      <table class="table">
+        <tr
+          class="table-hover"
+          onmouseover="trHover(this)"
+          onmouseout="trOut(this)"
+        >
+          <th style="padding:13px 0 0 15px">이 름</th>
+          <td th:text="${basic.name}"></td>
+        </tr>
+        <tr
+          class="table-hover"
+          onmouseover="trHover(this)"
+          onmouseout="trOut(this)"
+        >
+          <th style="padding:13px 0 0 15px;">직 책</th>
+          <td th:text="${basic.label}"></td>
+        </tr>
+        <tr
+          class="table-hover"
+          onmouseover="trHover(this)"
+          onmouseout="trOut(this)"
+        >
+          <th style="padding:13px 0 0 15px;">E-mail</th>
+          <td th:text="${basic.email}"></td>
+        </tr>
+        <tr
+          class="table-hover"
+          onmouseover="trHover(this)"
+          onmouseout="trOut(this)"
+        >
+          <th style="padding:13px 0 0 15px;">연락처</th>
+          <td th:text="${basic.phone}"></td>
+        </tr>
+      </table>
+
+      <a th:href="'/basic/' + ${basic.idx} + '/update'" class="btn btn-outline-secondary">수정</a>
+      <a href="/" class="btn btn-outline-secondary">목록</a>
+    </div>
+
+    <div class="item-profile" th:if="${profile} != null">
+      <table class="table">
+        <tr  class="table-hover"
+             onmouseover="trHover(this)"
+             onmouseout="trOut(this)">
+          <th style="padding:13px 0 0 15px">SNS</th>
+          <td th:text="${profile.network}"></td>
+        </tr>
+
+        <tr  class="table-hover"
+             onmouseover="trHover(this)"
+             onmouseout="trOut(this)">
+          <th style="padding:13px 0 0 15px;">ID</th>
+          <td th:text="${profile.userName}"></td>
+        </tr>
+        <tr  class="table-hover"
+             onmouseover="trHover(this)"
+             onmouseout="trOut(this)">
+          <th style="padding:13px 0 0 15px;">링크</th>
+          <td th:text="${profile.url}"></td>
+        </tr>
+        <tr  class="table-hover"
+             onmouseover="trHover(this)"
+             onmouseout="trOut(this)">
+          <th style="padding:13px 0 0 15px;">생성날짜</th>
+          <td th:text="${profile.createDate} ? ${#temporals.format(profile.createDate,'yyyy-MM-dd HH:mm:ss')} : ${profile?.createDate}"></td>
+        </tr>
+      </table>
+      <a th:href="'/profile/' + ${profile.idx} + '/update'" class="btn btn-outline-secondary">수정</a>
+      <a href="/" class="btn btn-outline-secondary">목록</a>
+    </div>
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

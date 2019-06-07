@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>2014758030, 김종훈</title>
+
+    <style>
+      div.basicList {
+        margin: 10px 10% 10px 10%;
+      }
+      div.profileList {
+        margin: 10px 10% 10px 10%;
+      }
+    </style>
+
+    <script>
+      function trHover(tr) {
+        tr.style.backgroundColor = "#E2E2E2";
+      }
+      function trOut(tr) {
+        tr.style.backgroundColor = "white";
+      }
+    </script>
+  </head>
+  <body>
+    <header style="margin: 10px;">
+      <a href="/" style="text-decoration: none; color: black;">
+        <img
+          th:src="@{/images/spring_boot_green.png}"
+          style="height: 100px; width: 130px; margin-right: 15px;"
+        />
+        <span style="font-size: 24pt;"><strong>Spring Boot CRUD</strong></span>
+      </a>
+      <hr />
+    </header>
+
+    <div class="basicList">
+      <header>
+        <h1>Basic 목록</h1>
+      </header>
+
+      <nav style="width: 100px; margin:10px 0;">
+        <a href="/basic/new" class="btn btn-outline-secondary">인원 등록</a>
+      </nav>
+
+      <form action="#" th:action="@{/basic/delete}" method="post">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th> </th>
+            <th>#</th>
+            <th>이름</th>
+            <th>직책</th>
+            <th>이메일</th>
+            <th>연락처</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            class="table-hover"
+            onmouseover="trHover(this)"
+            onmouseout="trOut(this)"
+            th:each="basic : ${basicList}"
+          >
+            <td><input type="checkbox" th:value="${basic.idx}" name="deleteBasicsIdx"></td>
+            <td th:text="${basic.idx}"></td>
+            <td>
+              <a th:href="'/basic/' + ${basic.idx}" th:text="${basic.name}"></a>
+            </td>
+            <td th:text="${basic.label}"></td>
+            <td th:text="${basic.email}"></td>
+            <td th:text="${basic.phone}"></td>
+          </tr>
+        </tbody>
+      </table>
+        <input class="btn btn-outline-secondary" type="submit" value="삭제">
+      </form>
+    </div>
+
+    <div class="profileList">
+      <header>
+        <h1>Profile 목록</h1>
+      </header>
+
+      <nav style="width: 120px; margin:10px 0;">
+        <a href="/profile/new" class="btn btn-outline-secondary">프로필 등록</a>
+      </nav>
+
+      <form action="#" th:action="@{/profile/delete}" method="post">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th> </th>
+            <th>#</th>
+            <th>SNS</th>
+            <th>ID</th>
+            <th>링크</th>
+            <th>등록시간</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            class="table-hover"
+            onmouseover="trHover(this)"
+            onmouseout="trOut(this)"
+            th:each="profile : ${profileList}"
+          >
+            <td><input type="checkbox" th:value="${profile.idx}" name="deleteProfileIdx"></td>
+            <td th:text="${profile.idx}"></td>
+            <td>
+              <a
+                th:href="'/profile/' + ${profile.idx}"
+                th:text="${profile.network}"
+              ></a>
+            </td>
+            <td th:text="${profile.userName}"></td>
+            <td th:text="${profile.url}"></td>
+            <td
+              th:text="${profile.createDate} ? ${#temporals.format(profile.createDate,'yyyy-MM-dd HH:mm:ss')} : ${profile.createDate}"
+            ></td>
+          </tr>
+        </tbody>
+      </table>
+      <input class="btn btn-outline-secondary" type="submit" value="삭제">
+      </form>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
