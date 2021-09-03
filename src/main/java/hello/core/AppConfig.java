@@ -16,6 +16,22 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
+    // @Bean memberService -> new MemoryMemberRepository()
+    // @Bean orderService -> new MemoryMemberRepository()
+
+    // 예상 호출
+    // call AppConfig.memberService
+    // call AppConfig.memberRepository
+    // call AppConfig.memberRepository
+    // call AppConfig.orderService
+    // call AppConfig.memberRepository
+
+    // 실제 호출
+    // call AppConfig.memberService
+    // call AppConfig.memberRepository
+    // call AppConfig.orderService
+
+
     @Bean
     public MemberService memberService() {
         return new MemberServiceImpl(memberRepository());
@@ -37,3 +53,9 @@ public class AppConfig {
     }
 
 }
+
+// 메소드 내에 sout 으로 찍어보면 호출마다 메소드를 호출 하지 않고
+// 단 한번만 호출한다.
+// memberRepository 호출 후 orderService 호출한다고 해서 orderService 안에 있는 memberRepository
+// 를 다시 호출 하지 않는다는 것이다.
+// 스프링 프레임워크는 이렇게 어떠한 방법을 써서 어떻게든 싱글톤을 보장해준다.
