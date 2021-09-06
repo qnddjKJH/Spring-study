@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 // 여담 자바 기초 final 은 무조건 값이 들어가 있어야 한다.
 // 직접적으로 들어가든 생성자를 통해 들어가든
-@RequiredArgsConstructor
+// @RequiredArgsConstructor
 // 필수 값을 가지고(final 지정) 생성자를 만들어주는 Lombok annotation 이다.
 // final 이 붙은 필드를 모아서 생성자를 자동으로 만들어준다. 보이지 않아도 실제 호출이 가능하다.
 public class OrderServiceImpl implements OrderService {
@@ -30,11 +31,12 @@ public class OrderServiceImpl implements OrderService {
         private final MemberRepository memberRepository;
 
 
-//        @Autowired
-//        public OrderServiceImpl(DiscountPolicy discountPolicy, MemberRepository memberRepository) {
-//            this.discountPolicy = discountPolicy;
-//            this.memberRepository = memberRepository;
-//        }
+        @Autowired
+        public OrderServiceImpl(@MainDiscountPolicy DiscountPolicy discountPolicy,
+                                MemberRepository memberRepository) {
+            this.discountPolicy = discountPolicy;
+            this.memberRepository = memberRepository;
+        }
     // @RequiredArgsConstructor 로 위의 생성자가 생성된다. final 은 필수값
 
     // 필드 주입 방식
