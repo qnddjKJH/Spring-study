@@ -6,12 +6,20 @@
  기본 MVC 파트를 각각의 기술들로 재구현 하며 공부합니다. 
 * [x] 서블릿 Basic
 * [x] 서블릿
-* [ ] JSP
-* [ ] 서블릿 MVC
-* [ ] FrontController - v1
-* [ ] FrontController - v2
-* [ ] FrontController - v3
-* [ ] FrontController - v4
+* [x] JSP
+* [x] 서블릿 MVC
+* [x] FrontController - v1
+  * FrontController 도입
+* [x] FrontController - v2
+  * View 분리
+* [x] FrontController - v3
+  * Model 추가
+  * 많은 것이 바뀌는 부분 제일 실용적으로 작성된다.
+  * 서블릿 종속성 제거, 뷰 이름 중복 제거
+* [x] FrontController - v4
+  * 단순하지만 실용적인 Controller
 * [ ] FrontController - v5 - v3
+  * 유연한 Controller - 1
 * [ ] FrontController - v5 - v4
-* [ ] Spring MVC - v1
+  * 유연한 Controller - 2
+* [ ] Spring MVC

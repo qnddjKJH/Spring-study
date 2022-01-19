@@ -1,4 +1,4 @@
-package hello.servlet.domain.member;
+package hello.servlet.basic.member;
 
 import java.util.ArrayList;
 import java.util.HashMap;
