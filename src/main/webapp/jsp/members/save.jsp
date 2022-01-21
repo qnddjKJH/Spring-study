@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="hello.servlet.basic.member.Member" %>
-<%@ page import="hello.servlet.basic.member.MemberRepository" %><%--
+<%@ page import="hello.servlet.domain.member.Member" %>
+<%@ page import="hello.servlet.domain.member.MemberRepository" %><%--
   Created by IntelliJ IDEA.
   User: qnddj
   Date: 2022-01-19
