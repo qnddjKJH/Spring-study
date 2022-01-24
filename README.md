@@ -18,8 +18,9 @@
   * 서블릿 종속성 제거, 뷰 이름 중복 제거
 * [x] FrontController - v4
   * 단순하지만 실용적인 Controller
-* [ ] FrontController - v5 - v3
+* [x] FrontController - v5 - v3
   * 유연한 Controller - 1
-* [ ] FrontController - v5 - v4
+* [x] FrontController - v5 - v4
   * 유연한 Controller - 2
-* [ ] Spring MVC
+* [x] Spring MVC
+  * 현 실무 형태
